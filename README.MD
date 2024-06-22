@@ -1,55 +1,106 @@
-2048 Game
+# 2048 Game using Pygame
 
-This is a simple implementation of the popular 2048 game using Pygame. The objective of the game is to slide numbered tiles on a grid to combine them and create a tile with the number 2048. You can continue to play even after reaching the 2048 tile to achieve higher scores.
+This project implements the classic 2048 game using Pygame, a popular Python library for game development. The game involves combining tiles with the same number to reach the tile with the number 2048.
 
-Features
-Basic 2048 gameplay with tiles that merge when moved in the same direction.
-Supports movement in all four directions: left, right, up, and down.
-Automatic addition of new tiles after each move.
-Detects and handles the losing condition, displaying a "You Lose" message with an animation.
-Installation
-Ensure you have Python installed. You can download it from python.org.
+## Table of Contents
 
-Install Pygame using pip:
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Gameplay](#gameplay)
+- [Functions](#functions)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+2048 is a single-player sliding block puzzle game developed by Gabriele Cirulli. The objective is to slide numbered tiles on a grid to combine them and create a tile with the number 2048. This implementation uses Pygame to create a graphical interface and handle user input.
+
+## Installation
+
+To run the 2048 game:
+
+1. Clone the repository: git clone <https://github/recabet/2048>
+
+2. Navigate to the project directory: cd 2048
+
+3. Install Pygame if not already installed: pip install pygame
+
+4. Run the game: python 2048.py
 
 
-pip install pygame
+## Usage
 
-Download the script and save it to a file, for example, 2048.py.
+- Use the arrow keys (Up, Down, Left, Right) to move tiles on the grid.
+- Tiles with the same number merge into one when they collide.
+- After each move, a new tile appears randomly on an empty spot with a value of either 2 or 4.
+- The goal is to create a tile with the number 2048.
+- The game ends when no more moves can be made.
 
-Usage
+## Gameplay
 
-Run the game script using Python:
+- **Grid Size**: The game grid is 4x4 by default.
+- **Tile Colors**: Tiles have different colors based on their value, following a predefined color scheme.
+- **Losing Condition**: The game ends when no more moves can be made and no empty spots are available.
 
-python 2048.py
+## Functions
 
-Use the arrow keys to move the tiles:
+### `add_new_tile()`
 
-Left Arrow: Move tiles left
-Right Arrow: Move tiles right
-Up Arrow: Move tiles up
-Down Arrow: Move tiles down
-When no moves are possible, the game will display a "You Lose" message and exit after a short delay.
+Generates a new tile (either 2 or 4) in a random empty cell on the grid.
 
-Code Explanation
-Main Components
-Game Initialization: Initializes the game window and sets up the initial grid.
-Tile Management: Handles adding new tiles and merging tiles based on user input.
-Drawing Functions: Renders the grid and tiles on the screen.
-Movement Handling: Moves tiles in the specified direction and checks for possible moves.
-Losing Condition: Checks if no moves are possible and displays the "You Lose" message.
-Functions
-add_new_tile(): Adds a new tile (2 or 4) at a random empty position on the grid.
-draw_grid(): Draws the grid and tiles on the screen.
-move_tiles_left(): Handles merging and moving tiles to the left.
-rotate_grid_clockwise(grid): Rotates the grid clockwise.
-rotate_grid_counterclockwise(grid): Rotates the grid counterclockwise.
-move(direction): Moves tiles in the specified direction.
-can_move(): Checks if there are any valid moves left.
-handle_input(): Processes user input and updates the game state.
-show_lose_message(): Displays the "You Lose" message with an animation.
-Acknowledgments
-This implementation is inspired by the original 2048 game by Gabriele Cirulli. You can find the original game here.
+### `draw_grid()`
 
-License
-This project is open-source and available under the MIT License. Feel free to use, modify, and distribute the code as you wish.
+Draws the game grid on the Pygame screen, including tiles with their respective numbers and colors.
+
+### `move_tiles_left()`
+
+Moves all tiles to the left in the grid, merging adjacent tiles with the same number if they collide. Returns the updated grid and a boolean indicating if any tiles were moved.
+
+### `rotate_grid_clockwise(grid)`
+
+Rotates the given grid clockwise by 90 degrees.
+
+### `rotate_grid_counterclockwise(grid)`
+
+Rotates the given grid counterclockwise by 90 degrees.
+
+### `move(direction)`
+
+Moves tiles on the grid based on the specified direction ('left', 'right', 'up', 'down'). Updates the grid and returns a boolean indicating if any tiles were moved.
+
+### `can_move()`
+
+Checks if there are any possible moves left on the grid. Returns `True` if at least one tile can be moved, `False` otherwise.
+
+### `handle_input()`
+
+Handles user input events (key presses). Moves tiles on the grid accordingly (left, right, up, down) and adds a new tile if a move was made. Returns `True` if the game can continue, `False` if the game is over.
+
+### `show_lose_message()`
+
+Displays a "You Lose!" message on the Pygame screen when the game ends. Pauses the game for 2 seconds before quitting.
+
+### `main()`
+
+Main game loop that initializes the game, handles game events, updates the screen, and checks game over conditions. Exits the game loop and displays a lose message when the game ends.
+
+## Contributing
+
+Contributions to this project are welcome! If you'd like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature`)
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`)
+5. Push to the branch (`git push origin feature`)
+6. Create a new Pull Request.
+
+Please ensure that your code follows the existing coding style and conventions.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
